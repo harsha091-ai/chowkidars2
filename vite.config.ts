@@ -3,7 +3,6 @@ import path from "path";
 
 export default defineConfig({
   tanstackStart: {
-    // Explicitly tell TanStack Start where to find your app and router
     appDirectory: 'src',
     routerFile: 'src/router.tsx',
   },
@@ -13,10 +12,17 @@ export default defineConfig({
         "@": path.resolve(__dirname, "./src"),
       },
     },
-    // This ensures your project builds into a single dist folder
     build: {
       outDir: 'dist',
       emptyOutDir: true,
+      rollupOptions: {
+        output: {
+          // Freeze filenames so we can link to them in our index.html
+          entryFileNames: `assets/[name].js`,
+          chunkFileNames: `assets/[name].js`,
+          assetFileNames: `assets/[name].[ext]`
+        }
+      }
     }
   }
 });
