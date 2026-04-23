@@ -13,6 +13,13 @@ export default defineConfig({
     routerFile: 'src/router.tsx',
   },
   vite: {
+    build: {
+      rollupOptions: {
+        input: {
+          main: 'index.html'
+        }
+      }
+    },
     resolve: {
       alias: {
         "@": path.resolve(__dirname, "./src"),
