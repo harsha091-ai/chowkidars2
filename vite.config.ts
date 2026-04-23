@@ -3,8 +3,9 @@ import path from "path";
 
 export default defineConfig({
   tanstackStart: {
-    appDirectory: 'src',
-    routerFile: 'src/router.tsx',
+    appDirectory: "src",
+    routerFile: "src/router.tsx",
+    adapter: "vercel",
   },
   vite: {
     resolve: {
@@ -13,16 +14,16 @@ export default defineConfig({
       },
     },
     build: {
-      outDir: 'dist',
+      outDir: "dist",
       emptyOutDir: true,
       rollupOptions: {
         output: {
           // Freeze filenames so we can link to them in our index.html
           entryFileNames: `assets/[name].js`,
           chunkFileNames: `assets/[name].js`,
-          assetFileNames: `assets/[name].[ext]`
-        }
-      }
-    }
-  }
+          assetFileNames: `assets/[name].[ext]`,
+        },
+      },
+    },
+  },
 });
